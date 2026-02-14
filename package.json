@@ -6,21 +6,50 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "supabase:login": "supabase login",
+    "supabase:link": "supabase link --project-ref mimvgestlzmkizdhxhdo",
+    "supabase:status": "supabase status",
+    "db:push": "supabase db push",
+    "db:reset": "supabase db reset",
+    "db:seed": "tsx scripts/seed.ts",
+    "db:check": "tsx scripts/check-db.ts",
+    "db:types": "supabase gen types typescript --project-id mimvgestlzmkizdhxhdo > lib/database.types.ts",
+    "setup": "npm install && npm run supabase:link && npm run db:push && npm run db:seed"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.21.0",
+    "@radix-ui/react-dialog": "^1.1.4",
+    "@radix-ui/react-dropdown-menu": "^2.1.4",
+    "@radix-ui/react-select": "^2.1.4",
+    "@radix-ui/react-slider": "^1.2.1",
+    "@radix-ui/react-tabs": "^1.1.1",
+    "@supabase/ssr": "^0.8.0",
+    "@supabase/supabase-js": "^2.45.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "lucide-react": "^0.469.0",
     "next": "16.1.6",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "react-hot-toast": "^2.4.1",
+    "react-markdown": "^10.1.0",
+    "tailwind-merge": "^2.5.5",
+    "zod": "^3.23.8",
+    "zustand": "^5.0.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "dotenv": "^17.3.1",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "supabase": "^1.200.3",
     "tailwindcss": "^4",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   }
 }

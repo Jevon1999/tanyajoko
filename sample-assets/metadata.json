@@ -1,0 +1,8 @@
+
+{
+  "name": "Tanya Joko - AI Travel Assistant Yogyakarta",
+  "description": "A premium AI-powered travel assistant specializing in Yogyakarta, featuring localized insights, personalized itineraries, and discovery of hidden gems.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

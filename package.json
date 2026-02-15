@@ -14,6 +14,7 @@
     "db:reset": "supabase db reset",
     "db:seed": "tsx scripts/seed.ts",
     "db:check": "tsx scripts/check-db.ts",
+    "db:export": "tsx scripts/export-db.ts",
     "db:types": "supabase gen types typescript --project-id mimvgestlzmkizdhxhdo > lib/database.types.ts",
     "setup": "npm install && npm run supabase:link && npm run db:push && npm run db:seed"
   },

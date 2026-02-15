@@ -19,13 +19,13 @@ export async function GET(request: NextRequest) {
     const supabase = await createClient()
 
     // Use the database function for nearby search
-    const { data, error } = await supabase
+    const { data, error } = await (supabase as any)
       .rpc('get_nearby_destinations', {
         user_lat: lat,
         user_lng: lng,
         radius_km: radius,
         category_filter: category
-      }) as { data: any; error: any }
+      })
 
     if (error) {
       console.error('Nearby search error:', error)
@@ -35,7 +35,6 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    // @ts-ignore - data type inference
     return NextResponse.json({
       destinations: data || [],
       count: Array.isArray(data) ? data.length : 0,

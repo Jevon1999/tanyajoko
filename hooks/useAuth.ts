@@ -38,7 +38,6 @@ export function useAuth() {
       profile,
       isAuthenticated: true,
       isLoading: false,
-      // @ts-expect-error - Supabase SSR v0.5.2 type inference bug with Database generic
       hasDiscount: profile?.has_discount || false,
     })
   }, [supabase])

@@ -10,17 +10,14 @@ export function useSpeechRecognition() {
   const [isSupported, setIsSupported] = useState(false)
   
   const recognitionRef = useRef<SpeechRecognition | null>(null)
-  const [isInitialized, setIsInitialized] = useState(false)
+  const isInitializedRef = useRef(false)
 
   useEffect(() => {
-    if (isInitialized) return
+    if (isInitializedRef.current) return
     
     const recognition = new SpeechRecognition()
     recognitionRef.current = recognition
-    
-    // Check support and set state
-    setIsSupported(recognition.isAvailable())
-    setIsInitialized(true)
+    isInitializedRef.current = true
 
     recognition.onResult((text) => {
       setTranscript(text)
@@ -41,10 +38,10 @@ export function useSpeechRecognition() {
       setIsListening(false)
     })
 
-    // Check browser support
-    if (recognition.isAvailable()) {
-      setIsSupported(true)
-    }
+    // Check browser support asynchronously
+    Promise.resolve(recognition.isAvailable()).then((supported) => {
+      setIsSupported(supported)
+    })
 
     return () => {
       if (recognitionRef.current) {

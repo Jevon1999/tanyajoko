@@ -19,14 +19,13 @@ export async function GET(request: NextRequest) {
     const supabase = await createClient()
 
     // Use the database function for nearby search
-    // @ts-expect-error - Supabase RPC function not in generated types
     const { data, error } = await supabase
       .rpc('get_nearby_destinations', {
         user_lat: lat,
         user_lng: lng,
         radius_km: radius,
         category_filter: category
-      })
+      }) as { data: any; error: any }
 
     if (error) {
       console.error('Nearby search error:', error)

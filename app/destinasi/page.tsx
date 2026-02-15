@@ -58,13 +58,12 @@ export default function DestinationsPage() {
       }
 
       // Transform data to match interface
-      // @ts-ignore - Supabase SSR v0.5.2 type inference bug
       const transformedData = (data || []).map(dest => ({
         ...dest,
         avg_rating: dest.rating || 0,
-        review_count: 0, // We'll need to count this separately if needed
+        review_count: 0,
         photos: dest.image_url ? [{ url: dest.image_url }] : []
-      }))
+      })) as Destination[]
 
       setDestinations(transformedData)
     } catch (error) {
